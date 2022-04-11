@@ -17,8 +17,8 @@ class reservation(models.Model):
 class contact(models.Model):
     Name=models.CharField(max_length=50)
     Email=models.EmailField()
-    Phone=models.IntegerField()
-    Message=models.TextField()
+    Number_people=models.IntegerField()
+    Message=models.CharField(max_length=200, null=True)
 
     class Meta:
         db_table="contact"

@@ -78,7 +78,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.html">
-					<img src="{% static 'images/logo.png'%}" alt="" />
+					<img src="{% static 'D:\foodempire\user\static\images\logo.png'%}" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
@@ -93,7 +93,7 @@
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
                 <!--<a class="dropdown-item" href="reservation.html">Reservation</a>-->
-                <a class="dropdown-item" href="{% url 'reservation' %}">Reservation</a>
+                <a class="dropdown-item" href="{% url 'createreservation' %}">Reservation</a>
 								<a class="dropdown-item" href="{% url 'stuff' %}">Stuff</a>
 								<a class="dropdown-item" href="{% url 'gallery' %}">Gallery</a>
 								
@@ -107,7 +107,7 @@
 								<a class="dropdown-item" href="{% url 'blog-single' %}">blog Single</a>
 							</div>
 						</li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'contact' %} ">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'createcontact' %} ">Contact</a></li>
 						
 					</ul>
 				</div>

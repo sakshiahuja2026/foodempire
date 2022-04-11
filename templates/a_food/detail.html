@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block container %}
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Table Booking Details #{{ book.id }}</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    tablebook Name
+                </dt>
+                <dd class="col-sm-9">
+                    {{ tablebook.name }}
+                </dd>
+                <dt class="col-sm-3">
+                    tablebook Email
+                </dt>
+                <dt class="col-sm-3">
+                    {{ tablebook.email }}
+                </dt>
+                <dt class="col-sm-3">
+                    tablebook Phone
+                </dt>
+                <dd class="col-sm-9">
+                    {{ tablebook.phone }}
+                </dd>
+                <dt class="col-sm-3">
+                    tablebook Date
+                    </dt>
+                <dd class="col-sm-9">
+                    {{ tablebook.date }}
+                </dd>
+                <dt class="col-sm-3">
+                    tablebook Time
+                </dt>
+                <dd class="col-sm-9">
+                    {{ tablebook.time }}
+                </dd>
+                <dt class="col-sm-3">
+                    tablebook Number of People
+                </dt>
+                <dd class="col-sm-9">
+                    {{ tablebook.people }}
+                </dd>
+                <dt class="col-sm-3">
+                    tablebook Message
+                </dt>
+                <dd class="col-sm-9">
+                    {{ tablebook.message }}
+                </dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}

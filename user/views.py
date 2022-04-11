@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from django.views.generic import ListView,DetailView
 from django.urls import reverse_lazy
-from .models import reservation
+from .models import reservation,contact
 
 # Create your views here.
 
@@ -10,7 +10,7 @@ def index(request):
     return render(request,"index.html")
 def about(request):
     return render(request,"about.html")
-def contact(request):
+def contact1(request):
     return render(request,"contact.html")
 def reservation1(request):
     return render(request,"reservation.html")
@@ -31,12 +31,12 @@ class createreservation(CreateView):
     model = reservation
     fields = '__all__'
     template_name = 'reservation/createreservation.html'
-    success_url = '/user/viewtable/'
+    success_url = '/user/viewreservation/'
 class viewreservation(ListView):
     model = reservation
-    #reservations = model.objects.all()
+    reservations = model.objects.all()
     context_object_name = 'reservations'
-    #template_name = "user/templates/reservation/list.html"
+    template_name = "reservation/list.html"
 class detailreservation(DetailView):
     model = reservation
     #template_name = "user//template/detail.html"
@@ -54,24 +54,23 @@ class updatereservation(UpdateView):
 class createcontact(CreateView):
     model = contact
     fields='__all__'
-    template_name='a_food/createcontact.html'
-    success_url='/a_food/view/'
-
+    template_name='contact/createcontact.html'
+    success_url='/user/viewcontact/'
 class viewcontact(ListView):
     model = contact
-    #contactes = model.objects.all()
+    contactes = model.objects.all()
     context_object_name = 'contactes'
-    template_name = "a_food/view.html"
+    template_name = "contact/contactlist.html"
 class detailcontact(DetailView):
     model = contact
-    template_name = "a_food/detail.html"
+    #template_name = "a_food/detail.html"
 class deletecontact(DeleteView):
     model = contact
     fields='__all__'
-    template_name='a_food/delete.html'
+    #template_name='a_food/delete.html'
     #success_url='/a_food/view/'
 class updatecontact(UpdateView):
     model = contact
     fields='__all__'
-    template_name='a_food/update.html'
+    #template_name='a_food/update.html'
     #success_url='/a_food/view/'

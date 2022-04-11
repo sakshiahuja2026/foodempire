@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Add New Table Booking </h5>
+    </div>
+    <div class="card-body">
+        <form  method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <!--<button type="submit" class="btn btn-success">Create</button>-->
+            <div class="clearfix">
+                <button id="myButton" class="btn btn-success">Create</button>
+          
+          <script type="text/javascript">
+              document.getElementById("myButton").onclick = function () {
+                  location.href = "http://127.0.0.1:8000/a_food/viewtable";
+              };
+          </script>
+        </form>
+    </div>
+</div>
+{% endblock %}

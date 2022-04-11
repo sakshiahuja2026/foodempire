@@ -15,21 +15,32 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from user.views import index,menu,reservation1,contact,about,gallery,stuff,blog,blog_single
-from user.views import createreservation,reservation1
-
+from user.views import createcontact, index,menu,reservation1,contact,about,gallery,stuff,blog,blog_single
+from user.views import createreservation,reservation1,contact1,createcontact,viewreservation,detailreservation,deletereservation,updatereservation,viewcontact,detailcontact,deletecontact,updatecontact
+from a_food.views import createfood
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+    path("a_food/",include("a_food.urls")),
     path('index/',index,name='index'),
     path('menu/',menu,name='menu'),
     path('reservation/',reservation1,name='reservation'),
     path('rev/',createreservation.as_view(),name='createreservation'),
-    path('contact/',contact,name='contact'),
+    path('cont/',createcontact.as_view(),name='createcontact'),
+    path('contact/',contact1,name='contact'),
     path('about/',about,name='about'),
     path('gallery/',gallery,name='gallery'),
     path('stuff/',stuff,name='stuff'),
     path('blog/',blog,name='blog'),
     path('blog-single/',blog_single,name='blog-single'),
+    #path('createreservation/',createreservation.as_view(),name='reservationbook'),
+     path ('user/viewreservation/',viewreservation.as_view(),name='viewreservation'),
+     path ('detailreservation/<int:pk>',detailreservation.as_view(),name='detail'),
+     path ('deletereservation/<int:pk>',deletereservation.as_view(),name='delete'),
+     path ('updatereservation/<int:pk>',updatereservation.as_view(),name='update'),
+     #path ('createcontact/',createcontact.as_view(),name = "createcontactus"),
+     path ('user/viewcontact/',viewcontact.as_view(),name='viewcontact'),
+     path ('detailcontact/<int:pk>',detailcontact.as_view(),name='detail'),
+     path ('deletecontact/<int:pk>',deletecontact.as_view(),name='delete'),
+     path ('updatecontact/<int:pk>',updatecontact.as_view(),name='update'),
 ]

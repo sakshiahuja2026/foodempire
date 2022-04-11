@@ -1,23 +1,22 @@
-"""foodempire URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+from venv import create
+from django.urls import include, path
 from django.contrib import admin
-from django.urls import path
-from user.views import index,menu,reservation,contact,about,gallery,stuff,blog,blog_single
-from user.views import createreservation,reservation1
-
+from user import views
+from .views import createreservation,viewreservation,detailreservation,deletereservation,updatereservation,createcontact,viewcontact,deletecontact,updatecontact,detailcontact
 urlpatterns = [
+    
+     path('',views.index),
+     path('createreservation/',createreservation.as_view(),name='reservationbook'),
+     path ('viewreservation/',viewreservation.as_view(),name='viewreservation'),
+     path ('detailreservation/<int:pk>',detailreservation.as_view(),name='detail'),
+     path ('deletereservation/<int:pk>',deletereservation.as_view(),name='delete'),
+     path ('updatereservation/<int:pk>',updatereservation.as_view(),name='update'),
+     path ('createcontact/',createcontact.as_view(),name = "createcontactus"),
+     path ('viewcontact/',viewcontact.as_view(),name='viewcontack'),
+     path ('detailcontact/<int:pk>',detailcontact.as_view(),name='detail'),
+     path ('deletecontact/<int:pk>',deletecontact.as_view(),name='delete'),
+     path ('updatecontact/<int:pk>',updatecontact.as_view(),name='update'),
+     
 
-]
+
+]   
