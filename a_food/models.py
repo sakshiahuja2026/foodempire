@@ -1,5 +1,6 @@
 import email
 from email.message import Message
+from tkinter import Image
 from tokenize import Name
 from django.db import models
 from datetime import datetime
@@ -11,11 +12,13 @@ class food(models.Model):
     price=models.FloatField()
     quantity=models.IntegerField()
     Description=models.CharField(max_length=300)
-
-    Cost=models.FloatField()
+    image=models.ImageField(upload_to='food_images')    
 
     class Meta:
         db_table="a_food"
+
+    def __str__(self):
+        return self.fname
 
 
 

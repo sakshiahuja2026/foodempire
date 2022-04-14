@@ -2,9 +2,9 @@ from dataclasses import field
 from pyexpat import model
 from re import template
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from .models import food
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
 
 # Create your views here.
 class createfood(CreateView):
@@ -16,8 +16,22 @@ class createfood(CreateView):
 def index(request):
     return render(request,"index.html")
 
-class listfood(ListView):
+class viewfood(ListView):
     model = food
-    foods = model.objects.all()
+    foods = food.objects.all()
     context_object_name = 'foods'
     template_name = "a_food/menu.html"
+    
+class detailfood(DetailView):
+    model = food
+    template_name = "user/template/detail.html"
+class deletefood(DeleteView):
+    model = food
+    fields = '__all__'
+    template_name = 'user/template/delete.html'
+    success_url='/user/view/'
+class updatefood(UpdateView):
+    model = food
+    fields = '__all__'
+    template_name = 'user/template/update.html'
+    success_url='/user/view/'

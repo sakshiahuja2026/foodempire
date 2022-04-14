@@ -13,15 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
 from user.views import createcontact, index,menu,reservation1,contact,about,gallery,stuff,blog,blog_single
 from user.views import createreservation,reservation1,contact1,createcontact,viewreservation,detailreservation,deletereservation,updatereservation,viewcontact,detailcontact,deletecontact,updatecontact
 from a_food.views import createfood
-
+from django.contrib.auth.views import LoginView, LogoutView
+from UserApp.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("a_food/",include("a_food.urls")),
+    path("userapp/",include("UserApp.urls")),
     path('index/',index,name='index'),
     path('menu/',menu,name='menu'),
     path('reservation/',reservation1,name='reservation'),
@@ -43,4 +47,8 @@ urlpatterns = [
      path ('detailcontact/<int:pk>',detailcontact.as_view(),name='detail'),
      path ('deletecontact/<int:pk>',deletecontact.as_view(),name='delete'),
      path ('updatecontact/<int:pk>',updatecontact.as_view(),name='update'),
-]
+    #  path("user-registration/",BaseRegisterView.as_view(),name="user-registration"),
+    path("user-registration/",CustomerSignUpView.as_view(),name="user-registration"),
+
+    path('user/user-login/', UserLoginView.as_view() ,name='user-login'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

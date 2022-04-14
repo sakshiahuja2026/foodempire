@@ -3,6 +3,7 @@ from email.message import Message
 from tokenize import Name
 from datetime import datetime
 from django.db import models
+
 class reservation(models.Model):
     Name=models.CharField(max_length=50)
     Email=models.EmailField()
