@@ -17,16 +17,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
-from user.views import createcontact, index,menu,reservation1,contact,about,gallery,stuff,blog,blog_single
+import UserApp
+from user.views import createcontact, index,menu,reservation1,contact,about,gallery,stuff,blog,blog_single,normalindex
 from user.views import createreservation,reservation1,contact1,createcontact,viewreservation,detailreservation,deletereservation,updatereservation,viewcontact,detailcontact,deletecontact,updatecontact
 from a_food.views import createfood
 from django.contrib.auth.views import LoginView, LogoutView
 from UserApp.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('normalindex/',normalindex,name='normalindex'),
     path("a_food/",include("a_food.urls")),
     path("userapp/",include("UserApp.urls")),
     path('index/',index,name='index'),
+    #path('normalindex/',index,name='normalindex'),
     path('menu/',menu,name='menu'),
     path('reservation/',reservation1,name='reservation'),
     path('rev/',createreservation.as_view(),name='createreservation'),
@@ -51,4 +55,5 @@ urlpatterns = [
     path("user-registration/",CustomerSignUpView.as_view(),name="user-registration"),
 
     path('user/user-login/', UserLoginView.as_view() ,name='user-login'),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

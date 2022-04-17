@@ -26,6 +26,8 @@ def blog(request):
     return render(request,"blog.html")
 def blog_single(request):
     return render(request,"blog-single.html")
+def normalindex(request):
+    return render(request,"normalindex.html")
 #--------------------------------------RESERVATION CRUD-----------------------------------------
 class createreservation(CreateView):
     model = reservation
@@ -74,3 +76,4 @@ class updatecontact(UpdateView):
     fields='__all__'
     #template_name='a_food/update.html'
     #success_url='/a_food/view/'
+

@@ -13,6 +13,6 @@ urlpatterns = [
     path("user-registration/",CustomerSignUpView.as_view(),name="user-registration"),
 
     path('user-login/', UserLoginView.as_view() ,name='user-login'),
-    path("index/",views.index)  ,
+   # path("index/",views.index)  ,
     #path('',views.sendmail,name='send_mail'), 
 ]

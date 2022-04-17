@@ -1,3 +1,4 @@
+from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.conf import settings
@@ -44,9 +45,12 @@ class BaseRegisterView(SuccessMessageMixin, FormView):
 """
 class UserLoginView(LoginView):
     template_name = 'userportal/user_login.html'
+    success_url = "http://127.0.0.1:8000/a_food/view/"
 
-def index(request):
-    return render(request, 'userportal/index.html')
+#def index(request):
+   # return render(request, 'userportal/index.html')
+
+
 
 def sendmail(request):
     subject = 'welcome'
