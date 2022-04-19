@@ -17,6 +17,7 @@ urlpatterns = [
      path ('deletecontact/<int:pk>',deletecontact.as_view(),name='delete'),
      path ('updatecontact/<int:pk>',updatecontact.as_view(),name='update'),
      
+     
 
 
 ]   

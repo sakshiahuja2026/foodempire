@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block header %}
-
 {% endblock header %}
 
 {% block content %}
@@ -66,18 +65,18 @@
                 <div class="gallery-single fix">
                     <img src="{{food.image.url}}" class="img-fluid" alt="Image">
                     <div class="why-text">
-                        <form method="POST">
                         <h4>{{food.fname}}</h4>
                         <p>{{food.description}}</p>
                         <h5>{{food.price}}</h5>
+                        <button onclick = "AddToCart('{{food.id}}')" type="submit">ADD TO CART</button>
+                       
                         
-                        <button type="submit">ADD TO CART</button>
-                        </form>
                     </div>
                 </div>
             </div>
-
             {% endfor %}
+
+            
         </div> 
       
     </div>
@@ -90,9 +89,10 @@
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-left">
                 <p class="lead ">
-                    " If you're not the one cooking, stay out of the way and compliment the chef. "
+                    " Simple ingredients prepared in a simple way - that's the best way to take your everyday cooking to a higher level.
+
                 </p>
-                <span class="lead">Michael Strahan</span>
+                <span class="lead">Jose Andres</span>
             </div>
         </div>
     </div>
@@ -268,6 +268,50 @@
     </div>
 
 </footer>
+<script>
+    function AddToCart(item_id) {
+        console.log('item_id :', item_id)
+
+        
+
+        $.ajax({
+            method: "POST",
+            headers: {
+                "X-CSRFToken": csrftoken,
+            },
+            url: "../add_to_cart/",
+            data: {
+                'item_id': item_id,
+                'action': 'add'
+            },
+            success: function(data) {
+               
+            },
+            error: function(error) {
+               
+            }
+
+        }) 
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+</script>
+
 {% endblock content %}
 <!-- End Footer -->
 
@@ -287,3 +331,4 @@
 <script src="{% static 'js/contact-form-script.js' %}"></script>
 <script src="{%  static 'js/custom.js' %}"></script>
 {% endblock js %}
+

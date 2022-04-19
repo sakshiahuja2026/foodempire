@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
+from django.db.models.query_utils import Q
 from a_food.models import food
 
 class User(AbstractUser):
@@ -50,13 +51,34 @@ class location(models.Model):
 class cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     fid = models.ForeignKey(food, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
-    price = models.FloatField()
+    quantity = models.IntegerField(default=0)
+    #price = models.FloatField()
     class Meta:
         db_table = "cart"
 
     def __str__(self):
-        return self.fid
+        return f"{self.quantity} of {self.fid} for {self.user}"
+
+    @property
+    def get_cart_item(self):
+        orderitem_1 = cart.objects.filter(Q(user__username = self.user))
+        orderitem = list(orderitem_1)
+        return orderitem
+
+    @property
+    def get_cart_total(self):
+        total = self.fid.price * int(self.quantity)
+        return total
+
+    @property
+    def get_total(self):
+        orderitems = self.get_cart_item
+        total_1 = sum([items.get_cart_total for items in orderitems])    
+        total = "%.2f" % (total_1 + float(0.18 * total_1))
+        return total
+    
+        
+
 
 class status(models.Model):
 

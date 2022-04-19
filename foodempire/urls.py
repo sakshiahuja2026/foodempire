@@ -27,10 +27,10 @@ from UserApp.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('normalindex/',normalindex,name='normalindex'),
+    path('a_food/view/normalindex/',normalindex,name='normalindex'),
     path("a_food/",include("a_food.urls")),
     path("userapp/",include("UserApp.urls")),
     path('index/',index,name='index'),
-    #path('normalindex/',index,name='normalindex'),
     path('menu/',menu,name='menu'),
     path('reservation/',reservation1,name='reservation'),
     path('rev/',createreservation.as_view(),name='createreservation'),
