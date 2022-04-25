@@ -2,7 +2,7 @@
 
  
 <!-- partial -->
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <section class="banner-area organic-breadcrumb">
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
@@ -59,6 +59,7 @@
                                             <a type="button" class="btn btn-danger" style="padding: 6px; color: white;">
                                                 <span onclick="updateuserorder('{{ prod.product.id }}','delete')" class="ti-trash"></span>
                                             </a>
+                                            <button onclick="updateuserorder('{{ prod.product.id }}','delete')">REMOVE</button>
                                         </td>
                                     </tr>
                                     {% endfor %} {% endif %}

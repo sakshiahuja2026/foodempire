@@ -7,7 +7,7 @@
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
             <div class="col-first">
-                <h1>Shopping Cart</h1>
+                <h1>Shopping Cart 1</h1>
                 <nav class="d-flex align-items-center">
                     
                     
@@ -56,9 +56,12 @@
                                         </td>
                                         <td id="cart_total{{ prod.product.id }}" style="color:black;font-size: 16px;">{{ prod.get_cart_total }}</td>
                                         <td>
-                                            <a type="button" class="btn btn-danger" style="padding: 6px; color: white;">
+                                            {% comment %} <a type="button" class="btn btn-danger" style="padding: 6px; color: white;">
                                                 <span onclick="updateuserorder('{{ prod.product.id }}','delete')" class="ti-trash"></span>
-                                            </a>
+                                                
+                                            </a> {% endcomment %}
+                                            
+                                            <button onclick="updateuserorder('{{ prod.product.id }}','delete')">Remove</button>
                                         </td>
                                     </tr>
                                     {% endfor %} {% endif %}
